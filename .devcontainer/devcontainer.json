@@ -1,0 +1,23 @@
+{
+	"name": "Java Dev Container",
+	"build": {
+		"dockerfile": "../Dockerfile"
+	},
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+	"runArgs": [
+		"--privileged",
+		"-v", "/var/run/docker.sock:/var/run/docker.sock"
+	],
+	"postCreateCommand": "docker-compose up -d",
+	"service": "myapp",
+	"extensions": [
+		"vscjava.vscode-java-pack",
+		"pivotal.vscode-spring-boot",
+		"dbaeumer.vscode-eslint"
+	],
+	"forwardPorts": [8080, 9092, 2181, 9021, 8081],
+	"postCreateCommand": "mvn clean install",
+	"remoteUser": "root"
+}

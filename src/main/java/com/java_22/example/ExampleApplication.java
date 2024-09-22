@@ -1,5 +1,8 @@
 package com.java_22.example;
 
+import com.java_22.example.observerdp.Observer;
+import com.java_22.example.observerdp.Subject;
+import com.java_22.example.observerdp.Subscribe;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -18,6 +21,14 @@ public class ExampleApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ExampleApplication.class, args);
+		Observer observer = message -> System.out.println("Message: " + message);
+		Observer observer2 = message -> System.out.println("Message 2: " + message);
+
+		Subscribe subject = new Subject();
+		subject.subscribe(observer);
+		subject.subscribe(observer2);
+		subject.notifyObservers("Hello World");
+
 	}
 
 	@PostConstruct

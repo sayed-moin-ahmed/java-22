@@ -1,8 +1,7 @@
 package com.java_22.example.observerdp;
 
-
-public interface Subject {
-    void registerObserver(Observer observer);
-    void removeObserver(Observer observer);
-    <T> void notifyObservers(T Type);
+public sealed interface Subject permits ConcreteSubject {
+void addObserver(Observer observer);
+void removeObserver(Observer observer);
+void notifyObservers();
 }

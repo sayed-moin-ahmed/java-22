@@ -1,11 +1,14 @@
 package com.java_22.example.proxy;
 
-public record Proxy(ISubject ISubject) implements ISubject {
+public class Proxy  implements Image{
+    private ConcreteImage image;
 
-    @Override
-    public void request() {
-        System.out.println("Proxy request made");
-        ISubject.request();
+    public Proxy(String name){
+        this.image = new ConcreteImage(name);
     }
 
+    @Override
+    public String display() {
+        return  image.display();
+    }
 }

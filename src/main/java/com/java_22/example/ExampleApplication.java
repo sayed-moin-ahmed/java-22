@@ -1,9 +1,5 @@
 package com.java_22.example;
 
-import com.java_22.example.proxy.ISubject;
-import com.java_22.example.proxy.Proxy;
-import com.java_22.example.proxy.SubjectImpl;
-import com.java_22.example.singleton.CustomSingleton;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -22,17 +18,6 @@ public class ExampleApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ExampleApplication.class, args);
-
-
-		CustomSingleton singleton = CustomSingleton.getInstance();
-		singleton.setValue(10);
-		System.out.println(singleton.getValue());
-
-		ISubject subject1 = new SubjectImpl();
-		ISubject subject2 = new Proxy(subject1);
-		subject2.request();
-
-
 	}
 
 	@PostConstruct
